@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Clone Repository') {
       steps {
-        git branch: 'master', url: 'https://github.com/your-username/todo-app.git'
+        git branch: 'master', url: 'https://github.com/ravijadhav249/todo-app.git'
       }
     }
     stage('Build with Maven') {
@@ -16,9 +16,9 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       steps {
-        sh 'docker build -t your-dockerhub-username/todo-application:latest .'
+        sh 'docker build -t ravijadhav249/todo-application:latest .'
         sh 'echo $DOCKER_HUB_CREDENTIALS_PSW | docker login -u $DOCKER_HUB_CREDENTIALS_USR --password-stdin'
-        sh 'docker push your-dockerhub-username/todo-application:latest'
+        sh 'docker push ravijadhav249/todo-application:latest'
       }
     }
     stage('Deploy with Docker Compose') {
