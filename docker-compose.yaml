@@ -1,0 +1,23 @@
+version: '3'
+services:
+  todo-application:
+    image: todo-application-image:latest
+    ports:
+      - "8082:8081"
+    networks:
+      - todo-network
+  mysql-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Root@123
+      MYSQL_DATABASE: tododb
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - todo-network
+networks:
+  todo-network:
+volumes:
+  mysql-data:
